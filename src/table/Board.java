@@ -1,4 +1,6 @@
-package pokertrainer;
+package table;
+
+import pokertrainer.Card;
 
 public class Board {
    private Card[] flop = new Card[3];

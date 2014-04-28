@@ -1,6 +1,7 @@
-package pokertrainer;
+package table;
 
 import java.util.ArrayList;
+import pokertrainer.Deck;
 
 public class PokerTable {
     private ArrayList<Integer> playerList;
