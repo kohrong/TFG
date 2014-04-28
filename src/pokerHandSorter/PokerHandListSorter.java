@@ -28,6 +28,18 @@ public class PokerHandListSorter {
     }
 
     private void sortByCardRank(ArrayList<PokerHand> pokerHandList) {
-        //TO-DO, las pokerHands ya están ordenadas, hay que preguntar por los valores
+        Collections.sort(pokerHandList, new Comparator<PokerHand>() {
+
+            @Override
+            public int compare(PokerHand o1, PokerHand o2) {
+                for (int i = 0; i < o1.getSize(); i++) {
+                    if(o1.getCard(i).getValue() > o2.getCard(i).getValue())
+                        return -1;
+                    else if(o1.getCard(i).getValue() < o2.getCard(i).getValue())
+                        return 1;
+                }
+                return 0;
+            }
+        });
     }
 }
