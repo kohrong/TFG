@@ -45,7 +45,9 @@ public final class PokerHand implements Hand, Comparable<PokerHand>{
 
     @Override
     public int compareTo(PokerHand o) {
-        return 0;
+        int returnValue = compareByCategory(o);
+        if(returnValue != 0) return returnValue;
+        return compareByCardRank(o);
     }
 
     private void checkSpecialStraigth() {
@@ -58,5 +60,23 @@ public final class PokerHand implements Hand, Comparable<PokerHand>{
                 cards[4] = card;
             }
         }
+    }
+
+    private int compareByCategory(PokerHand o) {
+        if (this.getCategoryRank() > o.getCategoryRank())
+            return 1;
+        else if (this.getHandCategory() == o.getHandCategory())
+            return 0;
+        else
+            return -1;
+    }
+
+    private int compareByCardRank(PokerHand o) {            
+        for (int i = 0; i < o.getSize(); i++)
+            if (this.getCard(i).getValue() > o.getCard(i).getValue())
+                return -1;
+            else if (this.getCard(i).getValue() < o.getCard(i).getValue())
+                return 1;
+        return 0;
     }
 }
