@@ -3,7 +3,7 @@ package pokertrainer;
 import pokerCategory.HandCategory;
 import pokerHandSorter.PokerHandSorter;
 
-public final class PokerHand implements Hand{
+public final class PokerHand implements Hand, Comparable<PokerHand>{
     
     private Card[] cards = new Card[5];
     private final HandCategory handCategory;
@@ -12,8 +12,9 @@ public final class PokerHand implements Hand{
         this.cards = cards;
         handCategory = getHandCategory();
         PokerHandSorter pokerHandSorter = new PokerHandSorter();
-        pokerHandSorter.sort(cards);
+        pokerHandSorter.sort(cards);  
         this.cards = pokerHandSorter.getCards();
+        checkSpecialStraigth();
     }
 
     public int getSize(){
@@ -40,5 +41,22 @@ public final class PokerHand implements Hand{
 
     public void setCards(Card[] cardsInOrder) {
         this.cards = cardsInOrder;
+    }
+
+    @Override
+    public int compareTo(PokerHand o) {
+        return 0;
+    }
+
+    private void checkSpecialStraigth() {
+        if(handCategory == HandCategory.Straight || handCategory == HandCategory.StraightFlush){
+            if(cards[0].isAce() && cards[1].getNumber() == 5){
+                Card card = cards[0];
+                for (int i = 0; i < cards.length-1; i++) {
+                    cards[i] = cards[i+1];
+                }
+                cards[4] = card;
+            }
+        }
     }
 }

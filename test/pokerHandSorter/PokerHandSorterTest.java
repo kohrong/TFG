@@ -115,4 +115,16 @@ public class PokerHandSorterTest {
         assertTrue(pokerHand.getCard(1).getNumber() == 5);
         assertTrue(pokerHand.getCard(0).getNumber() == 6);
     }
+    
+    @Test
+    public void testSortSpecialStraightFlush() throws Card.Exception {
+        PokerHand pokerHand = new PokerHand(new Card[] {new Card(2, CardSuit.CLUB), new Card(3, CardSuit.CLUB), new Card(1, CardSuit.CLUB),
+            new Card(4, CardSuit.CLUB), new Card(5, CardSuit.CLUB)});
+        
+        assertTrue(pokerHand.getCard(4).isAce());
+        assertTrue(pokerHand.getCard(3).getNumber() == 2);
+        assertTrue(pokerHand.getCard(2).getNumber() == 3);
+        assertTrue(pokerHand.getCard(1).getNumber() == 4);
+        assertTrue(pokerHand.getCard(0).getNumber() == 5);
+    }
 }

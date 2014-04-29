@@ -42,31 +42,31 @@ public class PokerHandSorter {
     }
 
     private void sortListsByOcurrences() {
-        int maxValueIndex;    
+        int maxCountIndex;    
         for (int i = 0; i < countOfEachCard.size(); i++){
-            maxValueIndex = i;
+            maxCountIndex = i;
             for (int j = i+1; j < countOfEachCard.size(); j++) {
-                    if(countOfEachCard.get(maxValueIndex) < countOfEachCard.get(j))
-                    maxValueIndex = j;
-                    else if(countOfEachCard.get(maxValueIndex) == countOfEachCard.get(j)){
-                        if(valueOfCards.get(maxValueIndex) < valueOfCards.get(j))
-                            maxValueIndex = j;
+                    if(countOfEachCard.get(maxCountIndex) < countOfEachCard.get(j))
+                    maxCountIndex = j;
+                    else if(countOfEachCard.get(maxCountIndex) == countOfEachCard.get(j)){
+                        if(valueOfCards.get(maxCountIndex) < valueOfCards.get(j))
+                            maxCountIndex = j;
                     }
             }
-            exchangeIndexes(maxValueIndex, i);       
+            exchangeIndexes(maxCountIndex, i);       
         }
     }
 
-    private void exchangeIndexes(int maxValueIndex, int i) {
+    private void exchangeIndexes(int maxCountIndex, int i) {
         int countOfACard;
         int valueOfACard;
         countOfACard = countOfEachCard.get(i);
-        countOfEachCard.set(i, countOfEachCard.get(maxValueIndex));
-        countOfEachCard.set(maxValueIndex, countOfACard);
+        countOfEachCard.set(i, countOfEachCard.get(maxCountIndex));
+        countOfEachCard.set(maxCountIndex, countOfACard);
 
         valueOfACard = valueOfCards.get(i);
-        valueOfCards.set(i, valueOfCards.get(maxValueIndex));
-        valueOfCards.set(maxValueIndex, valueOfACard);
+        valueOfCards.set(i, valueOfCards.get(maxCountIndex));
+        valueOfCards.set(maxCountIndex, valueOfACard);
     }
 
     private void sortCardsByOcurrences(Card[] cards) {

@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import pokertrainer.Deck;
 
 public class PokerTable {
-    private ArrayList<Integer> playerList;
-    private double pot;
+    private ArrayList<PokerPlayer> playerList;
+    private int pot;
+    private int street; //ENUM
     private Board board;
     private Deck deck;
-    private double SB;
-    private double BB;
+    private int SB;
+    private int BB;
 
     public PokerTable() {
     }
